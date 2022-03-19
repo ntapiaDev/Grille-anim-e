@@ -29,12 +29,16 @@
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .grid__article div {
   height: 100%;
   padding: 20px;
   position: relative;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
   display: none;
 }
 
