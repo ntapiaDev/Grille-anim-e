@@ -2,21 +2,41 @@
 @import "variables";
 
 .speed {
+    width: 190px;
+    margin: 10px;
+    padding: 10px;
+    border: 3px double #CCC;
+    border-radius: 10px;
+    box-shadow: $light-shadow;
+    background-color: #EEE;
     position: absolute;
-    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 5;
 
-    &__btn {
+    div {
         width: 35px;
         height: 35px;
-        margin: 10px;
+        margin-right: 10px;
         box-shadow: $light-shadow;
         border-radius: 50%;
-        background-color: #CCC;
+        background-color: #EEE;
+        transition: background-color 0.3s;
         @include flex-center();
 
         &:hover {
             cursor: pointer;
+            background-color: #FFF;
         }
+    }
+
+    p {
+    margin: 10px 0 0 0;
+    }
+
+    hr {
+        width: 100%;
+        margin: 15px 0;
     }
 }
 

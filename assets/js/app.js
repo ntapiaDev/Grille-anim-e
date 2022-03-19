@@ -1,16 +1,67 @@
 let cards = document.querySelectorAll(".grid__article")
 
 let speed = 5000
-let faster = document.querySelector(".faster")
-let slower = document.querySelector(".slower")
+let randomFaster = document.querySelector(".random-faster")
+let randomSlower = document.querySelector(".random-slower")
 let randomSpeed = document.querySelector(".random-speed")
-faster.addEventListener("click", function() {
+randomFaster.addEventListener("click", function() {
     speed += 500
     randomSpeed.textContent = speed / 1000
 })
-slower.addEventListener("click", function() {
+randomSlower.addEventListener("click", function() {
     speed -= 500
     randomSpeed.textContent = speed / 1000
+})
+
+let delay = 2500
+let delayFaster = document.querySelector(".delay-faster")
+let delaySlower = document.querySelector(".delay-slower")
+let delaySpeed = document.querySelector(".delay-speed")
+delayFaster.addEventListener("click", function() {
+    delay += 500
+    delaySpeed.textContent = delay / 1000
+})
+delaySlower.addEventListener("click", function() {
+    delay -= 500
+    delaySpeed.textContent = delay / 1000
+})
+
+let reset = document.querySelector(".reset")
+reset.addEventListener("click", function() {
+    for (let card of cards) {
+        card.style.transition = "transform 0s"
+        card.style.transform = "rotate(0deg)"
+        card.children[0].style.display = "block"
+        card.children[0].style.opacity = "1"
+        card.children[1].style.display = "none"
+        card.children[1].style.opacity = "0"
+        card.children[1].style.transform = "rotate(0deg)"
+        clear()
+        speed = 5000
+        randomSpeed.textContent = speed / 1000
+        delay = 2500
+        delaySpeed.textContent = delay / 1000
+    }
+})
+
+let pause = document.querySelector(".pause")
+pause.addEventListener("click", function() {
+    clear()
+})
+
+let clear = function() {
+    let highestTimeoutId = setTimeout(";");
+    for (let i = 0 ; i < highestTimeoutId ; i++) {
+        clearTimeout(i); 
+    }
+}
+
+let play = document.querySelector(".play")
+play.addEventListener("click", function() {
+    for (let card of cards) {
+        card.style.transition = "transform 1s"
+        rotateInitiate(card)
+    }
 })
 
 let rotateInitiate = function(card) {
@@ -43,14 +94,14 @@ let rotateInitiate = function(card) {
 
     let rotateLaunch = function() {
         rotate(card, axe, degre)
-        setTimeout(replaceLaunch, Math.random() * speed + 2500)
+        setTimeout(replaceLaunch, Math.random() * speed + delay)
     }
 
     let replaceLaunch = function() {
         replace(card, axe)
     }
 
-    setTimeout(rotateLaunch, Math.random() * speed + 2500)
+    setTimeout(rotateLaunch, Math.random() * speed + delay)
 }
 
 let replace = function(card, axe) {
