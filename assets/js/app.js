@@ -2,21 +2,35 @@ let cards = document.querySelectorAll(".grid__article")
 let cardsImg = document.querySelectorAll(".grid__article img")
 let cardsDiv = document.querySelectorAll(".grid__article div")
 
-let rotate = function(direction, degre) {
-    for (let card of cards) {
-        card.style.transform = "" + direction + "("+ degre +")" // this.style.transform
-    }
-
-    for (let cardImg of cardsImg) {
-        cardImg.style.display = "none"
-    }
-
-    for (let cardDiv of cardsDiv) {
-        cardDiv.style.display = "block"
-        cardDiv.style.transform = "" + direction + "("+ degre +")"
-    }
+let rotate = function (card, direction, degre) {
+    card.style.transform = "" + direction + "("+ degre +")"
+    card.children[0].style.display = "none"
+    card.children[1].style.display = "block"
+    card.children[1].style.transform = "" + direction + "("+ degre +")"
 }
 
-rotate("rotateY", "-180deg")
+for (let card of cards) {
+    let axe
+    let degre
+
+    if (Math.random() >= 0.5) {
+        axe = "rotateY"
+    } else {
+        axe = "rotateX"
+    }
+
+    if (Math.random() >= 0.5) {
+        degre = "-180deg"
+    } else {
+        degre = "180deg"
+    }
+
+    let countdown = Math.random()*3000
+    let rotateInitiate = function() {
+        rotate(card, axe, degre)
+    }
+
+    setTimeout(rotateInitiate, countdown)
+}
 
 // replace()
