@@ -9,7 +9,9 @@ randomFaster.addEventListener("click", function() {
     randomSpeed.textContent = speed / 1000
 })
 randomSlower.addEventListener("click", function() {
-    speed -= 500
+    if (speed > 500) {
+        speed -= 500
+    }
     randomSpeed.textContent = speed / 1000
 })
 
@@ -22,7 +24,9 @@ delayFaster.addEventListener("click", function() {
     delaySpeed.textContent = delay / 1000
 })
 delaySlower.addEventListener("click", function() {
-    delay -= 500
+    if (delay > 1000) {
+        delay -= 500
+    }
     delaySpeed.textContent = delay / 1000
 })
 
