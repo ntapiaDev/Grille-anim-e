@@ -1,15 +1,6 @@
 let cards = document.querySelectorAll(".grid__article")
-let cardsImg = document.querySelectorAll(".grid__article img")
-let cardsDiv = document.querySelectorAll(".grid__article div")
 
-let rotate = function (card, direction, degre) {
-    card.style.transform = "" + direction + "("+ degre +")"
-    card.children[0].style.display = "none"
-    card.children[1].style.display = "block"
-    card.children[1].style.transform = "" + direction + "("+ degre +")"
-}
-
-for (let card of cards) {
+let rotateInitiate = function(card) {
     let axe
     let degre
 
@@ -25,12 +16,36 @@ for (let card of cards) {
         degre = "180deg"
     }
 
-    let countdown = Math.random()*3000
-    let rotateInitiate = function() {
-        rotate(card, axe, degre)
+    let rotate = function (card, axe, degre) {
+        card.style.transform = "" + axe + "("+ degre +")"
+        card.children[0].style.display = "none"
+        card.children[1].style.display = "block"
+        card.children[1].style.transform = "" + axe + "("+ degre +")"
     }
 
-    setTimeout(rotateInitiate, countdown)
+    let rotateLaunch = function() {
+        rotate(card, axe, degre)
+        setTimeout(replaceLaunch, Math.random() * 5000 + 2500)
+    }
+
+    let replaceLaunch = function() {
+        replace(card, axe)
+    }
+
+    setTimeout(rotateLaunch, Math.random() * 5000 + 2500)
 }
 
-// replace()
+let replace = function(card, axe) {
+    let degre = "0deg"
+
+    card.style.transform = "" + axe + "("+ degre +")"
+    card.children[0].style.display = "block"
+    card.children[1].style.display = "none"
+    card.children[1].style.transform = "" + axe + "("+ degre +")"
+
+    rotateInitiate(card)
+}
+
+for (let card of cards) {
+    rotateInitiate(card)
+}
