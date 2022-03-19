@@ -1,5 +1,18 @@
 let cards = document.querySelectorAll(".grid__article")
 
+let speed = 5000
+let faster = document.querySelector(".faster")
+let slower = document.querySelector(".slower")
+let randomSpeed = document.querySelector(".random-speed")
+faster.addEventListener("click", function() {
+    speed += 500
+    randomSpeed.textContent = speed / 1000
+})
+slower.addEventListener("click", function() {
+    speed -= 500
+    randomSpeed.textContent = speed / 1000
+})
+
 let rotateInitiate = function(card) {
     let axe
     let degre
@@ -30,14 +43,14 @@ let rotateInitiate = function(card) {
 
     let rotateLaunch = function() {
         rotate(card, axe, degre)
-        setTimeout(replaceLaunch, Math.random() * 5000 + 2500)
+        setTimeout(replaceLaunch, Math.random() * speed + 2500)
     }
 
     let replaceLaunch = function() {
         replace(card, axe)
     }
 
-    setTimeout(rotateLaunch, Math.random() * 5000 + 2500)
+    setTimeout(rotateLaunch, Math.random() * speed + 2500)
 }
 
 let replace = function(card, axe) {

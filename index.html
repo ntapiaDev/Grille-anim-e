@@ -6,10 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/015d178d74.js" crossorigin="anonymous"></script>
     <title>Grille animée</title>
 </head>
 <body>
     <main>
+        <aside class="speed">
+            <div class="speed__btn faster"><i class="fa-solid fa-plus"></i></div>
+            <div class="speed__btn slower"><i class="fa-solid fa-minus"></i></div>
+            <p>Vitesse aléatoire : <span class="random-speed">5</span> sec<br>+ 2,5 sec de délai minimum</p>
+        </aside>
         <section class="grid">
             <article class="grid__article">
                 <img src="./assets/img/1.jpg" alt="">
