@@ -85,13 +85,13 @@ let rotateInitiate = function(card) {
     }
 
     let rotate = function (card, axe, degre) {
-        card.style.transform = "" + axe + "("+ degre +")"
+        card.style.transform = axe + "("+ degre +")"
         card.children[0].style.opacity = "0"
         card.children[1].style.opacity = "1"
         let rotateCard = function() {
             card.children[0].style.display = "none"
             card.children[1].style.display = "block"
-            card.children[1].style.transform = "" + axe + "("+ degre +")"
+            card.children[1].style.transform = axe + "("+ degre +")"
         }
         setTimeout(rotateCard, 350)
     }
@@ -111,19 +111,27 @@ let rotateInitiate = function(card) {
 let replace = function(card, axe) {
     let degre = "0deg"
 
-    card.style.transform = "" + axe + "("+ degre +")"
+    card.style.transform = axe + "("+ degre +")"
     card.children[0].style.opacity = "1"
     card.children[1].style.opacity = "0"
     let replaceCard = function() {
         card.children[0].style.display = "block"
         card.children[1].style.display = "none"
-        card.children[1].style.transform = "" + axe + "("+ degre +")"
+        card.children[1].style.transform = axe + "("+ degre +")"
     }
     setTimeout(replaceCard, 350)
 
     rotateInitiate(card)
 }
 
-for (let card of cards) {
-    rotateInitiate(card)
+// Hauteur fixe :
+let cardHeight
+let calcHeight = function() {
+    cardHeight = cards[0].getBoundingClientRect().height
+    console.log(cardHeight)
+    for (let card of cards) {
+        card.style.height = cardHeight + "px"
+        rotateInitiate(card)
+    }
 }
+setTimeout(calcHeight, 100)

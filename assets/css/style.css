@@ -8,9 +8,7 @@
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #EEE;
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   z-index: 5;
@@ -62,6 +60,7 @@
   display: -ms-grid;
   display: grid;
   gap: 15px;
+  font-size: 0.8em;
 }
 
 .grid__article {
@@ -108,6 +107,7 @@
 
 @media screen and (min-width: 768px) {
   .grid {
+    font-size: 0.9em;
     -ms-grid-rows: 1fr 1fr;
     -ms-grid-columns: 1fr 1fr;
         grid-template: 1fr 1fr / 1fr 1fr;
@@ -115,7 +115,13 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .speed {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   .grid {
+    font-size: 1em;
     -ms-grid-rows: 1fr 1fr 1fr;
     -ms-grid-columns: 1fr 1fr 1fr;
         grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;

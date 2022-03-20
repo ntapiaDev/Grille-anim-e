@@ -10,7 +10,7 @@
     box-shadow: $light-shadow;
     background-color: #EEE;
     position: absolute;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     z-index: 5;
 
@@ -49,6 +49,7 @@
     background-color: #EEE;
     display: grid;
     gap: 15px;
+    font-size: 0.8em;
 
     &__article {
         width: 90%;
@@ -88,12 +89,17 @@
 
 @media screen and (min-width: 768px) {
     .grid {
+        font-size: 0.9em;
         grid-template: 1fr 1fr / 1fr 1fr ;
     }
 }
 
 @media screen and (min-width: 1280px) {
+    .speed {
+        display: flex;
+    }
     .grid {
+        font-size: 1em;
         grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr ;
     }
 }
